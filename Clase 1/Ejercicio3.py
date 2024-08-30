@@ -51,7 +51,11 @@ for i in range(5):
 print(f"La cantidad de numeros impares es de {contador_impares}")
 print(f"La cantidad de numeros pares es de {contador_pares}")
 print(f"El menor numero ingresado es {minimo}")
-print(f"De los pares, el mayor numero ingresado es {maximo_pares}")
+if contador_pares == 0: 
+    print("No se ingresaron numeros pares")
+else:
+    print(f"De los pares, el mayor numero ingresado es {maximo_pares}")
+    
 if contador_positivos > 0:
     print(f"La suma de los positivos es de {suma_positivos}")
 else:
