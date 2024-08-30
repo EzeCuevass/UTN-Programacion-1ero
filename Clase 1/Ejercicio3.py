@@ -16,6 +16,7 @@ suma_positivos = 0
 contador_negativos = 0
 contador_positivos = 0
 producto_negativos = 1
+ingresos_pares = 0
 for i in range(5):
 
     numero = int(input("Ingrese un numero: "))
@@ -28,6 +29,8 @@ for i in range(5):
     
     if numero % 2 == 0:
         contador_pares += 1
+        if ingresos_pares == 0:
+            maximo_pares = numero
         if maximo_pares < numero:
             maximo_pares = numero
     else:
