@@ -27,9 +27,9 @@ for i in range(5):
         minimo = numero
     
     if numero % 2 == 0:
-        contador_pares += 1
-        if ingresos_pares == 0:
+        if contador_pares == 0:
             maximo_pares = numero
+        contador_pares += 1
         if maximo_pares < numero:
             maximo_pares = numero
     else:
