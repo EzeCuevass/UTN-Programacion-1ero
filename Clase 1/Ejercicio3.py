@@ -19,13 +19,12 @@ producto_negativos = 1
 ingresos_pares = 0
 for i in range(5):
 
-    numero = int(input("Ingrese un numero: "))
+    numero = int(input("Ingrese un numero (Distinto de 0): "))
     while numero == 0:
         numero = int(input("Error. Ingrese un numero nuevamente:"))
     
     if ingresos == 0:
         minimo = numero
-        maximo_pares = numero
     
     if numero % 2 == 0:
         contador_pares += 1
