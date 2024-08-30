@@ -6,8 +6,6 @@
 # c. De los pares el mayor número ingresado.
 # d. Suma de los positivos.
 # e. Producto de los negativos.
-
-ingresos = 0
 contador_pares = 0
 contador_impares = 0
 minimo = 0
@@ -16,8 +14,8 @@ suma_positivos = 0
 contador_negativos = 0
 contador_positivos = 0
 producto_negativos = 1
-while ingresos < 5:
 
+for i in range(5):
     numero = int(input("Ingrese un numero: "))
     while numero == 0:
         numero = int(input("Error. Ingrese un numero nuevamente:"))
@@ -43,9 +41,6 @@ while ingresos < 5:
         contador_negativos += 1
         producto_negativos = producto_negativos * numero
     
-    ingresos += 1
-
-
 print(f"La cantidad de numeros impares es de {contador_impares}")
 print(f"La cantidad de numeros pares es de {contador_pares}")
 print(f"El menor numero ingresado es {minimo}")
