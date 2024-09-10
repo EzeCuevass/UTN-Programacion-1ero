@@ -36,22 +36,22 @@
 # 10 y 100, realice un descuento del 5% a dicho valor a través de una función llamada realizarDescuento(). 
 # Mostrar el resultadopor pantalla. Atención: pueden reutilizarse funciones ya creadas.
 
-# def en_rango(rango_1:int,rango_2:int,numero:int) -> bool:
-#     if numero >= rango_1 and numero <= rango_2:
-#         return True
-#     else:
-#         return False
-# rango_1 = int(input("Ingesa el numero mas pequeño del rango: "))
-# rango_2 = int(input("Ingesa el numero mas grande del rango: "))
-# numero1 =  int(input("Ingresa el numero a ser buscado en el rango: "))
-# def realizarDescuento(numero1):
-#     descuento = 5/100
-#     if en_rango(rango_1,rango_2,numero1):
-#         return numero1 - (numero1 * descuento)  
-#     else:
-#         return numero1
+def en_rango(rango_1:int,rango_2:int,numero:int) -> bool:
+    if (numero >= rango_1 and numero <= rango_2) or (numero >= rango_2 and numero <= rango_1):
+        return True
+    else:
+        return False
+rango_1 = int(input("Ingesa el primer numero del rango: "))
+rango_2 = int(input("Ingesa el segundo numero del rango: "))
+numero1 =  int(input("Ingresa el numero a ser buscado en el rango: "))
+def realizarDescuento(numero1):
+    descuento = 5/100
+    if en_rango(rango_1,rango_2,numero1):
+        return numero1 - (numero1 * descuento)  
+    else:
+        return numero1
 
-# print(realizarDescuento(numero1))
+print(realizarDescuento(numero1))
 
 # Realizar un programa que: asigne a las variables numero1 y numero2 los valores solicitados al usuario, 
 # valide los mismos entre 10 y 100, asigne a la variable operacion el valor solicitado al usuario: 
