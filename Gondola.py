@@ -61,5 +61,5 @@ def menu_opciones():
             case 5:
                 listar_orden()
             case 6: 
-                seguir="no"
+                salir()
 menu_opciones()
