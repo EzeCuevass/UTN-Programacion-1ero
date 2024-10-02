@@ -1,4 +1,5 @@
 from .listas_personas import address, telefonos, region, country, edades, mails, nombres, postalZip
+from Package_Lists import Lists
 direccion = []
 numero = []
 localidad = []
@@ -120,3 +121,70 @@ def datos_italia_40(country,edad):
         mensaje += f"Region: {region[i]}\n"
         mensaje += f"Codigo postal: {postalZip[i]}\n"
         print(mensaje)
+def datos_mexico_ordenados(country):
+    posicion = []
+    print("Datos de los usuarios de Mexico: ")
+    for i in range(len(country)):
+        if country[i] == "Mexico":
+            posicion.append(i)
+            for j in range(len(posicion)):
+                for k in range(len(posicion)):
+                    if nombres[posicion[j]] < nombres[posicion[k]]:
+                        Lists.swapear(posicion,j,k)
+    for i in posicion:
+        mensaje = f"Nombre: {nombres[i]}\n"
+        mensaje += f"Edad: {edades[i]}\n"
+        mensaje += f"Mail: {mails[i]}\n"
+        mensaje += f"Telefono: {telefonos[i]}\n"
+        mensaje += f"Direccion: {address[i]}\n"
+        mensaje += f"Pais: {country[i]}\n"
+        mensaje += f"Region: {region[i]}\n"
+        mensaje += f"Codigo postal: {postalZip[i]}\n"
+        print(mensaje)
+def datos_jovenes_ordenados(edad):
+    menores = []
+    posicion = []
+    for i in range(len(edad)):
+        if i == 0 or edad[i] < menores[0]:
+            menores = [edad[i]]
+            posicion = [i]
+        elif edad[i] == menores[0]:
+            menores.append(edad[i])
+            posicion.append(i)
+    for j in range(len(posicion)):
+                for k in range(len(posicion)):
+                    if nombres[posicion[j]] < nombres[posicion[k]]:
+                        Lists.swapear(posicion,j,k)
+    for i in posicion:
+            mensaje = f"Nombre: {nombres[i]}\n"
+            mensaje += f"Edad: {edades[i]}\n"
+            mensaje += f"Mail: {mails[i]}\n"
+            mensaje += f"Telefono: {telefonos[i]}\n"
+            mensaje += f"Direccion: {address[i]}\n"
+            mensaje += f"Pais: {country[i]}"
+            mensaje += f"Region: {region[i]}\n"
+            mensaje += f"Codigo postal: {postalZip[i]}\n"
+            print(mensaje)
+def datos_8000_ordenados(country,codigo):
+    posicion = []
+    for i in range(len(country)):
+        if country[i] == "Brazil" or country[i] == "Mexico":
+            if codigo[i] > 8000:
+                posicion.append(i)
+        for j in range(len(posicion)):
+                for k in range(len(posicion)):
+                    if nombres[posicion[j]] < nombres[posicion[k]]:
+                        Lists.swapear(posicion,j,k)
+                    elif nombres[posicion[j]] == nombres[posicion[k]]:
+                        if edades[posicion[j]] > edades[posicion[k]]:
+                            Lists.swapear(posicion,j,k)
+    for i in posicion:
+            mensaje = f"Nombre: {nombres[i]}\n"
+            mensaje += f"Edad: {edades[i]}\n"
+            mensaje += f"Mail: {mails[i]}\n"
+            mensaje += f"Telefono: {telefonos[i]}\n"
+            mensaje += f"Direccion: {address[i]}\n"
+            mensaje += f"Pais: {country[i]}\n"
+            mensaje += f"Region: {region[i]}\n"
+            mensaje += f"Codigo postal: {postalZip[i]}\n"
+            print(mensaje)

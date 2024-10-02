@@ -11,17 +11,20 @@ def menu():
     5:Obtener un promedio de edad de los usuarios
     6:De los usuarios de Brasil, listar los datos del usuario de mayor edad
     7:Listar los datos de los usuarios de México y Brasil cuyo código postal sea mayor a 8000
-    8:-Listar nombre, mail y teléfono de los usuarios italianos mayores a 40 años.
-    9: Cerrar menu
+    8:Listar nombre, mail y teléfono de los usuarios italianos mayores a 40 años.
+    9:Listar los datos de los usuarios de México ordenados por nombre
+    10:Listar los datos del/los usuario/s más joven/es ordenados por edad de
+    manera ascendente (Si la edad se repite, ordenar por nombre de manera
+    ascendente)
+    11-Listar los datos de los usuarios de México y Brasil cuyo código postal
+    sea mayor a 8000 ordenado por nombre y edad de manera descendente
+    12: Cerrar menu
     """)
         opcion = int(input("Elija su opcion: "))
         match opcion:
             case 1:
-                if direccion == [] and numero == [] and localidad == [] and pais == [] and edad == [] and nombre == [] and mail == [] and codigo_postal == []:
-                    print("No se puede realizar las operaciones, no se importaron las listas.")
-                else:
-                    importar()
-                    print("Listas importadas!")
+                importar()
+                print("Listas importadas!")
             case 2:
                 if direccion == [] and numero == [] and localidad == [] and pais == [] and edad == [] and nombre == [] and mail == [] and codigo_postal == []:
                     print("No se puede realizar las operaciones, no se importaron las listas.")
@@ -58,5 +61,20 @@ def menu():
                 else:
                     datos_italia_40(pais[0],edad[0])
             case 9:
+                if direccion == [] and numero == [] and localidad == [] and pais == [] and edad == [] and nombre == [] and mail == [] and codigo_postal == []:
+                    print("No se puede realizar las operaciones, no se importaron las listas.")
+                else:
+                    datos_mexico_ordenados(pais[0])
+            case 10:
+                if direccion == [] and numero == [] and localidad == [] and pais == [] and edad == [] and nombre == [] and mail == [] and codigo_postal == []:
+                    print("No se puede realizar las operaciones, no se importaron las listas.")
+                else:
+                    datos_jovenes_ordenados(edad[0])
+            case 11:
+                if direccion == [] and numero == [] and localidad == [] and pais == [] and edad == [] and nombre == [] and mail == [] and codigo_postal == []:
+                    print("No se puede realizar las operaciones, no se importaron las listas.")
+                else:
+                    datos_8000_ordenados(pais[0],codigo_postal[0])
+            case 12:
                 print("Adios!")
                 break

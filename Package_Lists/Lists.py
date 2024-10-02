@@ -11,3 +11,13 @@ def swapear(lista:list,i:int,j:int):
     aux = lista[i]
     lista[i] = lista[j]
     lista[j] = aux
+def ordenar_ascendente(lista:list):
+    for i in range(len(lista)):
+        for j in range(i+1, len(lista)):
+            if lista[i] > lista[j]:
+                swapear(lista,i,j)
+def ordenar_descendente(lista:list):
+    for i in range(len(lista)):
+        for j in range(i+1, len(lista)):
+            if lista[i] < lista[j]:
+                swapear(lista,i,j)
