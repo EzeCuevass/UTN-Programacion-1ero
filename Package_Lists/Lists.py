@@ -2,8 +2,13 @@ def mostrar_lista(lista:list):
     """
     Funcion desarrollada para mostrar una lista.
     """
-    for i in lista:
-        print(i)
+    for elemento in lista:
+        print(elemento)
+
+def mostrar_matriz(matriz:list):
+    for lista in matriz:
+        print(f"{lista[0]}:{lista[1]}")
+    
 def swapear(lista:list,i:int,j:int):
     """
     Funcion para swapear, en el metodo de ordenamiento de burbujeo.
