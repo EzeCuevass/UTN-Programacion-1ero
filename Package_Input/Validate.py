@@ -1,9 +1,23 @@
 def validate_number_int(mensaje,mensaje_error,min,max,reintentos)->int:
     contador_intentos = 0
-    numero = int(input(mensaje))
-    while numero < min or numero > max:
+    numero = input(mensaje)
+    def esentero(numero):
+        if len(numero)>0:
+            if numero[0] == "-":
+                if len(numero) == 1:
+                    return False
+                for caracter in numero[1:]:
+                    if not "0" <= caracter <= "9":
+                        return False
+            for caracter in numero:
+                if not "0"<= caracter <= "9": 
+                    return False
+        else:
+            return False
+        return True
+    while esentero(numero) == False or numero < min or numero > max:
         contador_intentos += 1
-        numero = int(input(mensaje_error))
+        numero = input(mensaje_error)
         if contador_intentos == reintentos:
             print("Intentos agotados. Intente mas tarde")
             return None
