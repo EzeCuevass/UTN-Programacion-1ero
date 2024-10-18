@@ -2,6 +2,8 @@ def validate_number_int(mensaje,mensaje_error,min,max,reintentos)->int:
     contador_intentos = 0
     numero = input(mensaje)
     def esentero(numero):
+        if type(numero) == int:
+            return True
         if len(numero)>0:
             if numero[0] == "-":
                 if len(numero) == 1:
@@ -15,6 +17,8 @@ def validate_number_int(mensaje,mensaje_error,min,max,reintentos)->int:
         else:
             return False
         return True
+    if esentero(numero)==True:
+        numero= int(numero)
     while esentero(numero) == False or numero < min or numero > max:
         contador_intentos += 1
         numero = input(mensaje_error)
