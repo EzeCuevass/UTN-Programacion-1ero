@@ -72,7 +72,7 @@ def mayor_promedio(estudiantes:list) -> None:
             bandera = False
             posicion = i
     mejor_promedio = estudiantes[posicion]
-    print(f"El estudiante con mejor promedio es {mejor_promedio["apellido"]} {mejor_promedio["nombre"]}")
+    print(f"El estudiante con mejor promedio es {mejor_promedio['apellido']} {mejor_promedio['nombre']}")
 def alumnos_club_informatica(estudiantes:list) -> None:
     """
     Listar nombre y apellido de los alumnos que forman el grupo “Club de
