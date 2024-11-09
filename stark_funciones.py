@@ -1,82 +1,103 @@
-def mostrar_heroes(heroes):
-    for heroe in heroes:
-        print(f"Nombre: {heroe['nombre']}")
-        print(f"Identidad: {heroe['identidad']}")
-        print(f"Altura: {heroe['altura']}")
-        print(f"Peso: {heroe['peso']}")
-        print(f"Fuerza: {heroe['fuerza']}")
-        print(f"Inteligencia: {heroe['inteligencia']}")
+def mostrar_objetos_array(array:list) -> None:
+    """
+    Toma un array conformado por objetos, y muestra por cada clave, el valor.
+    """
+    for objeto in array:
+        keys = (objeto.keys())
+        for key in keys:
+            print(f"{key} : {objeto[key]}")
         print("\n")
 
-def ordenar_por_nombre(heroes):
+def filtrar_por_clave(array:list, clave:str, valor) -> list:
     """
-    Listar ordenado por Nombre. Lista todos los datos de cada superhéroe ordenados por
-    Nombre de manera ascendente.
+    Funcion que se utiliza para filtrar un array, retorna el array que contienen los objetos que el valor coincide
+    con el pasado por parametros
     """
-    for i in range(len(heroes)):
-        for j in range(i,len(heroes)):
-            if heroes[i]["nombre"] > heroes[j]["nombre"]:
-                aux = heroes[j]
-                heroes[j] = heroes[i]
-                heroes[i] = aux
-    mostrar_heroes(heroes)
-def superheroe_mas_debil(heroes):
+    filtrado = []
+    for objeto in array:
+        if objeto[clave] == valor:
+            filtrado.append(objeto)
+    return filtrado
+def ordenar_por_clave(array:list, clave:str, orden:int=1) -> None:
     """
-    Listar Masculinos débiles. Recorrer la lista y determinar cuál es el superhéroe más débil de
-    género M.
+    Ordena array de diccionarios, comparando el valor de la clave pasada por parametro, si no recibe parametro de
+    orden, ordena ascendentemente, en el caso de recibirlo, si es 1 ordena ascendentemente, si es -1 de manera 
+    descendente
     """
-    min = 0
+    if orden == 1:
+        for i in range(len(array)):
+            for j in range(i,len(array)):
+                if array[i][clave] > array[j][clave]:
+                    aux = array[j]
+                    array[j] = array[i]
+                    array[i] = aux
+    elif orden == -1:
+        for i in range(len(array)):
+            for j in range(i,len(array)):
+                if array[i][clave] < array[j][clave]:
+                    aux = array[j]
+                    array[j] = array[i]
+                    array[i] = aux
+    mostrar_objetos_array(array)
+
+def establecer_min_max(bandera,minmax,posicion, i, clave, array):
+    """
+    Establece el minimo o el maximo, tomando como referencia los datos pasados por parametro.
+    """
+    bandera = False
+    min_max = int(array[i][clave])
+    posicion = i
+def obtener_min_max_por_clave(array:list, clave:str, opcion:int) -> int:
+    """
+    Obtiene el minimo o el maximo de la lista de objetos, y retorna su posicion
+    """
+    min_max = 0
     bandera = True
-    debiles = []
     posicion = 0
-    for i in range(len(heroes)):
-        if heroes[i]["fuerza"] < min or bandera:
-            bandera = False
-            min = heroes[i]["fuerza"]
-            posicion = i
-        if heroes[i]["fuerza"] <= 15:
-            debiles.append(heroes[i])
-    print("Los superheroes mas debiles son: ")
-    mostrar_heroes(debiles)
-    print(f"El superheroe mas debil es: {heroes[posicion]['nombre']}")
-def separar_inteligencia(heroes):
-    """
-    Listar inteligencia. Listar todos los superhéroes agrupados por tipo de inteligencia.
-    """
-    high = []
-    average = []
-    good = []
-    for heroe in heroes:
-        if heroe['inteligencia'] == "high":
-            high.append(heroe)
-        elif heroe['inteligencia'] == "average":
-            average.append(heroe)
-        elif heroe['inteligencia'] == "good":
-            good.append(heroe)
-        else:
-            print(f"No se tienen datos sobre la inteligencia de {heroe['nombre']}")
-    print("Heroes de inteligencia alta: ")
-    mostrar_heroes(high)
-    print("Heroes de inteligencia promedio: ")
-    mostrar_heroes(average)
-    print("Heroes de inteligencia buena: ")
-    mostrar_heroes(good)
-def calcular_imc(heroes):
-    """
-    Asignar IMC. Calcular el índice de masa corporal de cada superhéroe y guardarla en un
-    nuevo campo. Se deberá hacer uso de una función lambda que asignará a cada superhéroe el
-    IMC calculado.
-    """
-    for heroe in heroes:
-        imc = heroe["peso"] / ((heroe["altura"]/100)**2)
-        heroe["imc"] = imc
+    if opcion == 1:
+        for i in range(len(array)):
+            if array[i][clave] > min_max or bandera:
+                establecer_min_max(bandera, min_max, posicion, i, clave, array)
+        return posicion
+    elif opcion == -1:
+        for i in range(len(array)):
+            if array[i][clave] < min_max or bandera:
+                establecer_min_max(bandera, min_max, posicion, i, clave, array)
+        return posicion
 
-    for heroe in heroes:
-        print(f"Nombre: {heroe['nombre']}")
-        print(f"Identidad: {heroe['identidad']}")
-        print(f"Altura: {heroe['altura']}")
-        print(f"Peso: {heroe['peso']}")
-        print(f"Fuerza: {heroe['fuerza']}")
-        print(f"Inteligencia: {heroe['inteligencia']}")
-        print(f"IMC: {heroe['imc']}")
-        print("\n")
+def contador_valor(array:list, clave:str, valor) -> int:
+    """
+    Cuenta cuantas veces esta el valor en un array de objetos
+    """
+    contador = 0
+    for objeto in array:
+        if objeto[clave] == valor:
+            contador += 1
+    return contador
+
+def obtener_set_valores(array:list, clave:str):
+    """
+    Crea un set de valores encontrados en un array.
+    """
+    set_nuevo = set()
+    for objeto in array:
+        set_nuevo.add(objeto[clave])
+    return set_nuevo
+
+def promedio_por_clave(array:list,clave:str):
+    """
+    Funcion que obtiene el promedio de un array, basandose en el valor de la clave pasada por parametro.
+    """
+    total = 0
+    for objeto in array:
+        total += int(objeto[clave])
+    promedio = total / len(array)
+    return promedio
+
+
+def agregar_clave(objeto:dict, clave, valor):
+    """
+    Funcion para agregar clave a un diccionario.
+    Params: Clave ; Valor
+    """
+    objeto[clave] = valor

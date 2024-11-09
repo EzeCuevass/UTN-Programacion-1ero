@@ -1,6 +1,5 @@
 from Package_Input import Input
-from Package_Lists import Lists
-from data_stark import heroes
+from data_stark import lista_personajes
 from stark_funciones import *
 def menu():
     seguir = "si"
@@ -20,21 +19,52 @@ def menu():
     7. Asignar IMC. Calcular el índice de masa corporal de cada superhéroe y guardarla en un
     nuevo campo. Se deberá hacer uso de una función lambda que asignará a cada superhéroe el
     IMC calculado.
+    8. Salir
         """)
-        opcion = Input.get_int("Elija su opcion: ", min=1, max= 7)
+        opcion = Input.get_int("Elija su opcion: ", min=1, max= 8)
         match opcion:
             case 1:
-                ordenar_por_nombre(heroes)
+                ordenar_por_clave(lista_personajes, "nombre", 1)
             case 2:
-                superheroe_mas_debil(heroes)
+                filtrado = filtrar_por_clave(lista_personajes, "genero", "M")
+                posicion = (obtener_min_max_por_clave(filtrado, "fuerza", opcion=-1))
+                print(f"El superheroe mas debil es: {filtrado[posicion]['nombre']}")
             case 3:
-                print("No se obtuvieron datos sobre los ojos.")
+                set_ojos = obtener_set_valores(lista_personajes, "color_ojos")
+                for color in set_ojos:
+                    cantidad = contador_valor(lista_personajes, "color_ojos", color)
+                    print(f"Hay {cantidad} de heroes con el color de ojos {color}")
             case 4:
-                print("No se obtuvieron datos sobre el pelo.")
+                set_pelos = obtener_set_valores(lista_personajes, "color_pelo")
+                for color in set_pelos:
+                    filtro = filtrar_por_clave(lista_personajes, "color_pelo", color)
+                    print(f"Superheroes de color de pelo {color}:")
+                    mostrar_objetos_array(filtro)
+                    print("-------------------------------------")
             case 5:
-                separar_inteligencia(heroes)
+                set_inteligencias = obtener_set_valores(lista_personajes, "inteligencia")
+                for tipo in set_inteligencias:
+                    filtro = filtrar_por_clave(lista_personajes, "inteligencia", tipo)
+                    print(f"Superheroes de inteligencia {tipo}:")
+                    mostrar_objetos_array(filtro)
+                    print("-------------------------------------")
             case 6:
-                print("No se tienen datos sobre generos.")
+                fem = filtrar_por_clave(lista_personajes,"genero", "F")
+                promedio_fem = promedio_por_clave(fem, "fuerza")
+                mayor_al_promedio = []
+                for heroe in lista_personajes:
+                    if int(heroe["fuerza"]) > promedio_fem:
+                        mayor_al_promedio.append(heroe)
+                print("Los superheroes que tienen mayor fuerza al promedio son: \n")
+                mostrar_objetos_array(mayor_al_promedio)
             case 7:
-                calcular_imc(heroes)
+                for heroe in lista_personajes:
+                    print(heroe["altura"])
+                    print()
+                    imc = float(heroe["peso"]) / ((float(heroe["altura"])/100)**2)
+                    agregar_clave(heroe, "imc", imc)
+                mostrar_objetos_array(lista_personajes)
+            case 8:
+                print("adios!")
+                seguir = "no"
 menu()
