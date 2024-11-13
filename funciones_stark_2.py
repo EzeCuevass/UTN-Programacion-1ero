@@ -5,26 +5,73 @@ def leer_json(nombrearchivo:str, lista:str) -> list:
             archivo = json.load(j)
             return archivo[lista]
     except ValueError:
-        print("error")
+        print("Error de valor")
+    except FileNotFoundError:
+        print("Archivo no encontrado")
+    except TypeError:
+        print("Error en el codigo")
+    except SyntaxError:
+        print("Error de sintaxis")
+    except IsADirectoryError:
+        print("Error")
+    except IndexError:
+        print("Error de indice")
+    except KeyError:
+        print("Error de key")
+    except ImportError:
+        print("Error de importacion")
 
 def generar_csv(nombrearchivo:str, lista: str):
-    if lista != []:
-        array_contenido = []
-        for objeto in lista:
-            linea = objeto_a_csv(objeto) + "\n"
-            array_contenido.append(linea)
-            # guardar_archivo(nombrearchivo, linea)
-        guardar_archivo(nombrearchivo, array_contenido)
-        print("Se creo el archivo ", nombrearchivo)
-    else:
-        return False
+    try:
+        if lista != []:
+            array_contenido = []
+            for objeto in lista:
+                linea = objeto_a_csv(objeto) + "\n"
+                array_contenido.append(linea)
+                # guardar_archivo(nombrearchivo, linea)
+            guardar_archivo(nombrearchivo, array_contenido)
+            print("Se creo el archivo ", nombrearchivo)
+            return True
+        else:
+            return False
+    except ValueError:
+        print("Error de valor")
+    except FileNotFoundError:
+        print("Archivo no encontrado")
+    except TypeError:
+        print("Error en el codigo")
+    except SyntaxError:
+        print("Error de sintaxis")
+    except IsADirectoryError:
+        print("Error")
+    except IndexError:
+        print("Error de indice")
+    except KeyError:
+        print("Error de key")
+    except ImportError:
+        print("Error de importacion")
 
 def guardar_archivo(nombrearchivo:str, contenido:list):
-    with open(nombrearchivo, "w") as archivo:
-        archivo.writelines(contenido)
-    # archivo = open(nombrearchivo, "w+")
-    # archivo.write(contenido)
-    # archivo.close()
+    try:
+        with open(nombrearchivo, "w") as archivo:
+            archivo.writelines(contenido)
+    except ValueError:
+        print("Error de valor")
+    except FileNotFoundError:
+        print("Archivo no encontrado")
+    except TypeError:
+        print("Error en el codigo")
+    except SyntaxError:
+        print("Error de sintaxis")
+    except IsADirectoryError:
+        print("Error")
+    except IndexError:
+        print("Error de indice")
+    except KeyError:
+        print("Error de key")
+    except ImportError:
+        print("Error de importacion")
+
 
 def ordenar_por_clave(array:list, clave:str, orden:int=1) -> None:
     """
@@ -48,8 +95,25 @@ def ordenar_por_clave(array:list, clave:str, orden:int=1) -> None:
                     array[i] = aux
     return array
 def objeto_a_csv(diccionario):
-    array = []
-    for clave in diccionario:
-        array.append(str(diccionario[clave]))
-    string = ",".join(array)
-    return string
+    try:
+        array = []
+        for clave in diccionario:
+            array.append(str(diccionario[clave]))
+        string = ",".join(array)
+        return string
+    except ValueError:
+        print("Error de valor")
+    except FileNotFoundError:
+        print("Archivo no encontrado")
+    except TypeError:
+        print("Error en el codigo")
+    except SyntaxError:
+        print("Error de sintaxis")
+    except IsADirectoryError:
+        print("Error")
+    except IndexError:
+        print("Error de indice")
+    except KeyError:
+        print("Error de key")
+    except ImportError:
+        print("Error de importacion")
