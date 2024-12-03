@@ -41,7 +41,6 @@ while running:
             # En caso de que el click sea en el rectangulo de "PLAY", usa la funcion de nuevo juego, con texto
             # y el juego principal (retorna puntos) como parametro
             if play_box.collidepoint(event.pos):
-                print("Jugando al jueguito dou nashe")
                 nuevo_juego(texto,maingame(screen, imagen))
         # En caso de que se aprete una tecla con el input activo, entra al if
         if event.type == pygame.KEYDOWN and active:
